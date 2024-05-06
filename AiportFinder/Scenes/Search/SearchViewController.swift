@@ -94,7 +94,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         case .authorized:
             break
         @unknown default:
-            showAlert(title: "Latitud Longitud", message: "Allow location from settings to continue.")
+            break
         }
     }
     @IBAction func sliderChanged(_ sender: UISlider) {
