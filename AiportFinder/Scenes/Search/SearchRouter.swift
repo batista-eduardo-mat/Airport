@@ -14,6 +14,7 @@ import UIKit
 
 @objc protocol SearchRoutingLogic {
     //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToTabBarController()
 }
 
 protocol SearchDataPassing {
@@ -21,10 +22,30 @@ protocol SearchDataPassing {
 }
 
 class SearchRouter: NSObject, SearchRoutingLogic, SearchDataPassing {
+    
+    
     weak var viewController: SearchViewController?
     var dataStore: SearchDataStore?
     
     // MARK: Routing
+    
+    func routeToTabBarController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarControllerIdentifier") as? UITabBarController else {
+            return
+        }
+        if let destinationMapVC = tabBarController.viewControllers?.first as? MapViewController {
+            var destinationMapDS = destinationMapVC.router!.dataStore!
+            passDataToMap(source: dataStore!, destination: &destinationMapDS)
+        }
+        
+        if let destinationListVC = tabBarController.viewControllers?[1] as? ListViewController {
+            var destinationListDS = destinationListVC.router!.dataStore!
+            passDataToList(sourse: dataStore!, destination: &destinationListDS)
+        }
+        
+        viewController?.navigationController?.pushViewController(tabBarController, animated: true)
+    }
     
     //func routeToSomewhere(segue: UIStoryboardSegue?)
     //{
@@ -50,8 +71,14 @@ class SearchRouter: NSObject, SearchRoutingLogic, SearchDataPassing {
     
     // MARK: Passing data
     
-    //func passDataToSomewhere(source: SearchDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+    func passDataToMap(source: SearchDataStore, destination: inout MapDataStore) {
+        destination.airports = source.airports
+        destination.currentLatitude = source.currentLatitude
+        destination.currentLongitude = source.currentLongitude
+        destination.radiusSelected = source.radiusSelected
+    }
+    
+    func passDataToList(sourse: SearchDataStore, destination: inout ListDataStore) {
+        destination.airports = sourse.airports
+    }
 }

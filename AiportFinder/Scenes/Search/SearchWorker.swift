@@ -23,8 +23,4 @@ class SearchWorker {
     func doSearchAirportsWork(with request: Search.Data.Request, completionHandler: @escaping (Result<[Search.Data.Response]>) -> Void) {
         networkManager.fetchAirports(with: request, completionHandler: completionHandler)
     }
-    
-    func doSomeWork() {
-        
-    }
 }

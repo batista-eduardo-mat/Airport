@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import MapKit
 
 protocol MapDisplayLogic: AnyObject {
     func displaySomething(viewModel: Map.Something.ViewModel)
@@ -21,6 +22,8 @@ class MapViewController: UIViewController, MapDisplayLogic {
     var router: (NSObjectProtocol & MapRoutingLogic & MapDataPassing)?
     
     // MARK: Object lifecycle
+    
+    @IBOutlet var airportsMap: MKMapView!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -63,12 +66,42 @@ class MapViewController: UIViewController, MapDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+        if let airports = router?.dataStore?.airports {
+            printMark(airports: airports)
+        }
+        
+        if let lat = router?.dataStore?.currentLatitude, let lon = router?.dataStore?.currentLongitude, let radius = router?.dataStore?.radiusSelected {
+            centerMap(lat: lat, lon: lon, radius: radius)
+            markCurrentLocation(lat: lat, lon: lon)
+        }
     }
     
     // MARK: Do something
     
     //@IBOutlet weak var nameTextField: UITextField!
+    
+
+    
+    func printMark(airports: [Airport]) {
+        for mark in airports {
+            let markAnotation = MKPointAnnotation()
+            markAnotation.title = mark.name
+            markAnotation.coordinate = CLLocationCoordinate2D(latitude: mark.latitude, longitude: mark.longitude)
+            airportsMap.addAnnotation(markAnotation)
+        }
+    }
+    
+    func centerMap(lat: Double, lon: Double, radius: Double) {
+        let radiuslocationDistance = CLLocationDirection(floatLiteral: radius * 1000)
+        airportsMap.centerToLocation(CLLocation(latitude: lat, longitude: lon), regionRadius: radiuslocationDistance)
+    }
+    
+    func markCurrentLocation(lat: Double, lon: Double) {
+        let markAnotation = MKPointAnnotation()
+        markAnotation.title = "Current Location"
+        markAnotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        airportsMap.addAnnotation(markAnotation)
+    }
     
     func doSomething() {
         let request = Map.Something.Request()

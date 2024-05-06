@@ -17,10 +17,12 @@ protocol ListBusinessLogic {
 }
 
 protocol ListDataStore {
-    //var name: String { get set }
+    var airports: [Airport] { get set }
 }
 
 class ListInteractor: ListBusinessLogic, ListDataStore {
+    var airports: [Airport] = []
+    
     var presenter: ListPresentationLogic?
     var worker: ListWorker?
     //var name: String = ""

@@ -17,25 +17,44 @@ protocol SearchBusinessLogic {
 }
 
 protocol SearchDataStore {
-    //var name: String { get set }
+    var airports: [Airport] { get set }
+    var currentLatitude: Double? { get set }
+    var currentLongitude: Double? { get set }
+    var radiusSelected: Double? { get set }
 }
 
 class SearchInteractor: SearchBusinessLogic, SearchDataStore {
-
+    
+    var airports: [Airport] = []
+    var currentLatitude: Double?
+    var currentLongitude: Double?
+    var radiusSelected: Double?
+    
+    
     var presenter: SearchPresentationLogic?
     var worker: SearchWorker?
-    //var name: String = ""
     
     // MARK: Do Search Airports
     
     func doSearchAirports(request: Search.Data.Request) {
+        self.currentLatitude = Double(request.lat)
+        self.currentLongitude = Double(request.lon)
+        self.radiusSelected = Double(request.radius)
         worker = SearchWorker()
-        worker?.doSearchAirportsWork(with: request,completionHandler: { result in
-            switch result {
-            case .success(let response):
-                self.presenter?.presentAirport(response: response)
-            case .failure(let error):
-                self.presenter?.presentError(error: error)
+        worker?.doSearchAirportsWork(with: request,completionHandler: { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    var airports: [Airport] = []
+                    for airport in response {
+                        let newAirport = Airport(name: airport.name ?? "No name", code: airport.alpha2countryCode ?? "No code", latitude: airport.latitude ?? 0.0, longitude: airport.longitude ?? 0.0)
+                        airports.append(newAirport)
+                    }
+                    self?.airports = airports
+                    self?.presenter?.presentAirport(response: response)
+                case .failure(let error):
+                    self?.presenter?.presentError(error: error)
+                }
             }
         })
     }

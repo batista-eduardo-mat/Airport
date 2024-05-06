@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E44114B2BE88C1700E61121 /* MapView+centerToLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44114A2BE88C1700E61121 /* MapView+centerToLocation.swift */; };
+		4E44114D2BE8A06600E61121 /* ViewController+showAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44114C2BE8A06600E61121 /* ViewController+showAlert.swift */; };
 		4EC342762BE6B2FD00FFB998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342752BE6B2FD00FFB998 /* AppDelegate.swift */; };
 		4EC342782BE6B2FD00FFB998 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342772BE6B2FD00FFB998 /* SceneDelegate.swift */; };
 		4EC3427D2BE6B2FD00FFB998 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3427C2BE6B2FD00FFB998 /* Base */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E44114A2BE88C1700E61121 /* MapView+centerToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+centerToLocation.swift"; sourceTree = "<group>"; };
+		4E44114C2BE8A06600E61121 /* ViewController+showAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+showAlert.swift"; sourceTree = "<group>"; };
 		4EC342722BE6B2FD00FFB998 /* AiportFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AiportFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EC342752BE6B2FD00FFB998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EC342772BE6B2FD00FFB998 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E4411482BE88BF800E61121 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4E44114A2BE88C1700E61121 /* MapView+centerToLocation.swift */,
+				4E44114C2BE8A06600E61121 /* ViewController+showAlert.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4EC342692BE6B2FD00FFB998 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +105,7 @@
 		4EC342742BE6B2FD00FFB998 /* AiportFinder */ = {
 			isa = PBXGroup;
 			children = (
+				4E4411482BE88BF800E61121 /* Extensions */,
 				4EC342D22BE6F4D400FFB998 /* Network */,
 				4EC3428C2BE6B39800FFB998 /* Scenes */,
 				4EC342752BE6B2FD00FFB998 /* AppDelegate.swift */,
@@ -241,11 +255,13 @@
 				4EC342A32BE6B4D600FFB998 /* MapViewController.swift in Sources */,
 				4EC342A42BE6B4D600FFB998 /* MapInteractor.swift in Sources */,
 				4EC342AB2BE6B59D00FFB998 /* ListPresenter.swift in Sources */,
+				4E44114B2BE88C1700E61121 /* MapView+centerToLocation.swift in Sources */,
 				4EC342AC2BE6B59D00FFB998 /* ListWorker.swift in Sources */,
 				4EC342AD2BE6B59D00FFB998 /* ListRouter.swift in Sources */,
 				4EC342AE2BE6B59D00FFB998 /* ListModels.swift in Sources */,
 				4EC342AF2BE6B59D00FFB998 /* ListViewController.swift in Sources */,
 				4EC342B02BE6B59D00FFB998 /* ListInteractor.swift in Sources */,
+				4E44114D2BE8A06600E61121 /* ViewController+showAlert.swift in Sources */,
 				4EC342CC2BE6F38400FFB998 /* SearchPresenter.swift in Sources */,
 				4EC342CD2BE6F38400FFB998 /* SearchWorker.swift in Sources */,
 				4EC342CE2BE6F38400FFB998 /* SearchRouter.swift in Sources */,

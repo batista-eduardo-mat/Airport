@@ -20,6 +20,7 @@ class ListViewController: UIViewController, ListDisplayLogic {
     var interactor: ListBusinessLogic?
     var router: (NSObjectProtocol & ListRoutingLogic & ListDataPassing)?
     
+    @IBOutlet var airportTableView: UITableView!
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -62,7 +63,8 @@ class ListViewController: UIViewController, ListDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+        airportTableView.dataSource = self
+        //doSomething()
     }
     
     // MARK: Do something
@@ -76,5 +78,30 @@ class ListViewController: UIViewController, ListDisplayLogic {
     
     func displaySomething(viewModel: List.Something.ViewModel) {
         //nameTextField.text = viewModel.name
+    }
+}
+
+extension ListViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Airports finder"
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let airport = router?.dataStore?.airports {
+            return airport.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        var confing = cell.defaultContentConfiguration()
+        if let airports = router?.dataStore?.airports {
+            confing.text = airports[indexPath.row].name
+            confing.secondaryText = airports[indexPath.row].code
+            cell.contentConfiguration = confing
+        }
+        return cell
     }
 }

@@ -17,10 +17,18 @@ protocol MapBusinessLogic {
 }
 
 protocol MapDataStore {
-    //var name: String { get set }
+    var airports: [Airport] { get set }
+    var currentLatitude: Double? { get set }
+    var currentLongitude: Double? { get set }
+    var radiusSelected: Double? { get set }
 }
 
 class MapInteractor: MapBusinessLogic, MapDataStore {
+    var airports: [Airport] = []
+    var currentLatitude: Double?
+    var currentLongitude: Double?
+    var radiusSelected: Double?
+    
     var presenter: MapPresentationLogic?
     var worker: MapWorker?
     //var name: String = ""
@@ -30,7 +38,6 @@ class MapInteractor: MapBusinessLogic, MapDataStore {
     func doSomething(request: Map.Something.Request) {
         worker = MapWorker()
         worker?.doSomeWork()
-        
         let response = Map.Something.Response()
         presenter?.presentSomething(response: response)
     }

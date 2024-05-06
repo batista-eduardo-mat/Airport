@@ -11,22 +11,23 @@
 //
 
 import UIKit
+import CoreLocation
 
 protocol SearchDisplayLogic: AnyObject {
-    func displaySomething(viewModel: Search.Data.ViewModel)
     func displayAirports(viewModel: Search.Data.ViewModel)
     func displayError(error: Error)
 }
 
 class SearchViewController: UIViewController, SearchDisplayLogic {
-  
-    
     var interactor: SearchBusinessLogic?
     var router: (NSObjectProtocol & SearchRoutingLogic & SearchDataPassing)?
     
     @IBOutlet var radiusLabel: UILabel!
     @IBOutlet var radiusSlider: UISlider!
-    
+    let locationManager = CLLocationManager()
+    var currentLatitude: Double?
+    var currentLongitude: Double?
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -68,14 +69,41 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.isHidden = true
+        locationManager.delegate = self
+        validateAuthorizationStatus()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
         
     }
-    
+    func validateAuthorizationStatus() {
+        let authorizationStatus = locationManager.authorizationStatus
+        
+        switch authorizationStatus {
+        case .notDetermined:
+            self.locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            showAlert(title: "Latitud Longitud", message: "Allow location from settings to continue.")
+        case .denied:
+            showAlert(title: "Latitud Longitud", message: "Allow location from settings to continue.")
+        case .authorizedAlways:
+            break
+        case .authorizedWhenInUse:
+            break
+        case .authorized:
+            break
+        @unknown default:
+            showAlert(title: "Latitud Longitud", message: "Allow location from settings to continue.")
+        }
+    }
     @IBAction func sliderChanged(_ sender: UISlider) {
         self.radiusLabel.text = String(format: "%.0f", sender.value)
     }
     
     @IBAction func searchPressed(_ sender: UIButton) {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         doSearchAirports()
     }
     
@@ -84,28 +112,50 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     //@IBOutlet weak var nameTextField: UITextField!
     
     func doSearchAirports() {
-        // 19.541793759109904, -99.0659460651684
-        let lat = "-54.81"
-        let lon = "-68.315"
-        let radius = "60"
-        let request = Search.Data.Request(lat: lat, lon: lon, radius: radius)
+        guard let lat = currentLatitude, let lon = currentLongitude else {
+            showAlert(title: "Latitud Longitud", message: "Allow location from settings to continue.")
+            DispatchQueue.main.async { [weak self] in
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.isHidden = true
+            }
+            return
+        }
+        let radiusSelected = String(format: "%.0f",radiusSlider.value)
+        let request = Search.Data.Request(lat: String(lat), lon: String(lon), radius: radiusSelected)
         interactor?.doSearchAirports(request: request)
-        print("doSearchAirports")
-    }
-    
-    func displaySomething(viewModel: Search.Data.ViewModel) {
-        //nameTextField.text = viewModel.name
+        
     }
     
     func displayAirports(viewModel: Search.Data.ViewModel) {
-        for airport in viewModel.ariports {
-            print(airport.name)
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.stopAnimating()
+            self?.activityIndicator.isHidden = true
         }
+        self.router?.routeToTabBarController()
     }
-    
     
     func displayError(error: any Error) {
-        print(error)
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.stopAnimating()
+            self?.activityIndicator.isHidden = true
+        }
+        showAlert(title: "Error", message: "Server request error")
     }
     
+}
+
+extension SearchViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            self.currentLatitude = latitude
+            self.currentLongitude = longitude
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
+        showAlert(title: "Error", message: "Error accessing current location.")
+    }
 }

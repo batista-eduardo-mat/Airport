@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="0vG-7X-B1X">
-                                <rect key="frame" x="40" y="84" width="240" height="295.5"/>
+                                <rect key="frame" x="40" y="84" width="240" height="332.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PbV-o7-kyC" userLabel="Logo-StackView">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="121.5"/>
@@ -38,7 +38,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JeI-B1-fnw" userLabel="Slider-StackView">
-                                        <rect key="frame" x="0.0" y="163.5" width="240" height="132"/>
+                                        <rect key="frame" x="0.0" y="163.5" width="240" height="169"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lo-XJ-I3f">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="69.5"/>
@@ -47,7 +47,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3TX-3N-ynR" userLabel="Radius-StackView">
-                                                <rect key="frame" x="0.0" y="81.5" width="240" height="50.5"/>
+                                                <rect key="frame" x="0.0" y="81.5" width="240" height="87.5"/>
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="1" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="ggd-81-lLL">
                                                         <rect key="frame" x="-2" y="0.0" width="244" height="31"/>
@@ -62,6 +62,11 @@
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="NMw-We-of2">
+                                                        <rect key="frame" x="0.0" y="50.5" width="240" height="37"/>
+                                                        <color key="tintColor" red="0.22745099660000001" green="0.40392160420000001" blue="0.75294119120000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="color" red="0.22745099660000001" green="0.40392160420000001" blue="0.75294119120000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </activityIndicatorView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -100,19 +105,20 @@
                     </view>
                     <navigationItem key="navigationItem" id="dDd-By-EsE"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="NMw-We-of2" id="TIh-nD-hXk"/>
                         <outlet property="radiusLabel" destination="1Lo-XJ-I3f" id="Nxw-n0-SKz"/>
                         <outlet property="radiusSlider" destination="ggd-81-lLL" id="X5p-2D-VIw"/>
-                        <segue destination="zHS-z7-aOR" kind="show" id="7VW-29-LuK"/>
+                        <segue destination="zHS-z7-aOR" kind="show" identifier="goToTabBar" id="7VW-29-LuK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="973.28244274809151" y="-2.1126760563380285"/>
         </scene>
-        <!--View Controller-->
+        <!--List View Controller-->
         <scene sceneID="jJD-i8-Avt">
             <objects>
-                <viewController id="OoF-2k-GBD" sceneMemberID="viewController">
+                <viewController id="OoF-2k-GBD" customClass="ListViewController" customModule="AiportFinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o40-a4-HBr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -158,15 +164,18 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="list.bullet" catalog="system" id="ag3-H5-jUB"/>
+                    <connections>
+                        <outlet property="airportTableView" destination="SkK-1M-vRN" id="x4S-2K-DUP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mR0-Pb-qPS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2744" y="301"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="F1H-Ug-bS6">
             <objects>
-                <viewController id="3xe-qo-wmG" sceneMemberID="viewController">
+                <viewController id="3xe-qo-wmG" customClass="MapViewController" customModule="AiportFinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8OQ-1E-xuZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,6 +195,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="map" catalog="system" id="nPU-zN-4rv"/>
+                    <connections>
+                        <outlet property="airportsMap" destination="h4j-9v-EOp" id="dPB-nP-6hi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VAa-6J-JVt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,7 +206,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="jrB-ef-o74">
             <objects>
-                <tabBarController id="zHS-z7-aOR" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarControllerIdentifier" id="zHS-z7-aOR" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="sqL-LC-ucC"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bgQ-iZ-vEE">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>

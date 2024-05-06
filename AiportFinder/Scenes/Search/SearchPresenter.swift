@@ -13,7 +13,6 @@
 import UIKit
 
 protocol SearchPresentationLogic {
-    func presentSomething(response: [Search.Data.Response])
     func presentAirport(response: [Search.Data.Response])
     func presentError(error: Error)
 }
@@ -21,12 +20,6 @@ protocol SearchPresentationLogic {
 class SearchPresenter: SearchPresentationLogic {
   
     weak var viewController: SearchDisplayLogic?
-    
-    // MARK: Do something
-    
-    func presentSomething(response: [Search.Data.Response]) {
-        
-    }
     
     func presentAirport(response: [Search.Data.Response]) {
         var airports: [Airport] = []
