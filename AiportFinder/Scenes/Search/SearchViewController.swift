@@ -113,7 +113,6 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     
     func doSearchAirports() {
         guard let lat = currentLatitude, let lon = currentLongitude else {
-            showAlert(title: "Latitud Longitud", message: "Allow location from settings to continue.")
             DispatchQueue.main.async { [weak self] in
                 self?.activityIndicator.stopAnimating()
                 self?.activityIndicator.isHidden = true
@@ -156,6 +155,6 @@ extension SearchViewController: CLLocationManagerDelegate {
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
-        showAlert(title: "Error", message: "Error accessing current location.")
+        print(error)
     }
 }
