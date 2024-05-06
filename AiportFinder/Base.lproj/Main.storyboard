@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="0vG-7X-B1X">
-                                <rect key="frame" x="40" y="84" width="240" height="332.5"/>
+                                <rect key="frame" x="40" y="84" width="240" height="348.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PbV-o7-kyC" userLabel="Logo-StackView">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="121.5"/>
@@ -26,45 +27,45 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AIRPORT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66T-j7-M7H">
                                                 <rect key="frame" x="4" y="0.0" width="232.5" height="68.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="57"/>
-                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="finder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vab-kO-wzw">
                                                 <rect key="frame" x="67.5" y="68.5" width="105.5" height="53"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="44"/>
-                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JeI-B1-fnw" userLabel="Slider-StackView">
-                                        <rect key="frame" x="0.0" y="163.5" width="240" height="169"/>
+                                        <rect key="frame" x="0.0" y="163.5" width="240" height="185"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lo-XJ-I3f">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="69.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="58"/>
-                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3TX-3N-ynR" userLabel="Radius-StackView">
-                                                <rect key="frame" x="0.0" y="81.5" width="240" height="87.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3TX-3N-ynR" userLabel="Radius-StackView">
+                                                <rect key="frame" x="0.0" y="81.5" width="240" height="103.5"/>
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="1" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="ggd-81-lLL">
                                                         <rect key="frame" x="-2" y="0.0" width="244" height="31"/>
-                                                        <color key="tintColor" red="0.22745099660000001" green="0.40392160420000001" blue="0.75294119120000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="tintColor" name="Blue"/>
                                                         <connections>
                                                             <action selector="sliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="k4h-DU-dZR"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RADIUS IN KM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68p-Rj-agc">
-                                                        <rect key="frame" x="0.0" y="30" width="240" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="38" width="240" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="NMw-We-of2">
-                                                        <rect key="frame" x="0.0" y="50.5" width="240" height="37"/>
-                                                        <color key="tintColor" red="0.22745099660000001" green="0.40392160420000001" blue="0.75294119120000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <rect key="frame" x="0.0" y="66.5" width="240" height="37"/>
+                                                        <color key="tintColor" name="Blue"/>
                                                         <color key="color" red="0.22745099660000001" green="0.40392160420000001" blue="0.75294119120000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </activityIndicatorView>
                                                 </subviews>
@@ -75,7 +76,7 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG5-OJ-d37">
                                 <rect key="frame" x="30" y="484" width="260" height="54"/>
-                                <color key="backgroundColor" red="0.22745099660000001" green="0.40392160420000001" blue="0.75294119120000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="Blue"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="aQr-Pq-rYT"/>
                                 </constraints>
@@ -244,6 +245,12 @@
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="map" catalog="system" width="128" height="112"/>
+        <namedColor name="Blue">
+            <color red="0.22745099660000001" green="0.40392160420000001" blue="0.75294119120000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
