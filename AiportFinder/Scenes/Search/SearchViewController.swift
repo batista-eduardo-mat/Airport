@@ -72,6 +72,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         activityIndicator.isHidden = true
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
@@ -94,7 +95,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
                 self?.activityIndicator.stopAnimating()
                 self?.activityIndicator.isHidden = true
             }
-            showAlert(title: "Location Error", message: "Allow location from settings to continue. [guard let]")
+            showAlert(title: "Location Error", message: "Allow location from settings to continue.")
             return
         }
         let radiusSelected = String(format: "%.0f",radiusSlider.value)
@@ -117,7 +118,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
             self?.activityIndicator.stopAnimating()
             self?.activityIndicator.isHidden = true
         }
-        showAlert(title: "Error", message: "Server request error")
+        showAlert(title: "Server Error", message: "Server request error")
     }
     
 }
@@ -134,7 +135,7 @@ extension SearchViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
-        showAlert(title: "Error", message: "Allow location from settings to continue. [CLLocationDelegate]")
+        showAlert(title: "Error", message: "Allow location from settings to continue.")
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
