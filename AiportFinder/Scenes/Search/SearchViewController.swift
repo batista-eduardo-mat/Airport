@@ -84,7 +84,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         case .notDetermined:
             self.locationManager.requestWhenInUseAuthorization()
         case .restricted:
-            showAlert(title: "Latitud Longitud", message: "Allow location from settings to continue.")
+            break
         case .denied:
             showAlert(title: "Latitud Longitud", message: "Allow location from settings to continue.")
         case .authorizedAlways:
