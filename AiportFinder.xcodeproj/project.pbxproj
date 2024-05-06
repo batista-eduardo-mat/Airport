@@ -12,12 +12,6 @@
 		4EC3427D2BE6B2FD00FFB998 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3427C2BE6B2FD00FFB998 /* Base */; };
 		4EC3427F2BE6B2FF00FFB998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3427E2BE6B2FF00FFB998 /* Assets.xcassets */; };
 		4EC342822BE6B2FF00FFB998 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4EC342812BE6B2FF00FFB998 /* Base */; };
-		4EC342932BE6B3C100FFB998 /* RadiusPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3428D2BE6B3C100FFB998 /* RadiusPresenter.swift */; };
-		4EC342942BE6B3C100FFB998 /* RadiusWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3428E2BE6B3C100FFB998 /* RadiusWorker.swift */; };
-		4EC342952BE6B3C100FFB998 /* RadiusRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3428F2BE6B3C100FFB998 /* RadiusRouter.swift */; };
-		4EC342962BE6B3C100FFB998 /* RadiusModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342902BE6B3C100FFB998 /* RadiusModels.swift */; };
-		4EC342972BE6B3C100FFB998 /* RadiusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342912BE6B3C100FFB998 /* RadiusViewController.swift */; };
-		4EC342982BE6B3C100FFB998 /* RadiusInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342922BE6B3C100FFB998 /* RadiusInteractor.swift */; };
 		4EC3429F2BE6B4D600FFB998 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342992BE6B4D600FFB998 /* MapPresenter.swift */; };
 		4EC342A02BE6B4D600FFB998 /* MapWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3429A2BE6B4D600FFB998 /* MapWorker.swift */; };
 		4EC342A12BE6B4D600FFB998 /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3429B2BE6B4D600FFB998 /* MapRouter.swift */; };
@@ -30,6 +24,13 @@
 		4EC342AE2BE6B59D00FFB998 /* ListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342A82BE6B59D00FFB998 /* ListModels.swift */; };
 		4EC342AF2BE6B59D00FFB998 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342A92BE6B59D00FFB998 /* ListViewController.swift */; };
 		4EC342B02BE6B59D00FFB998 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342AA2BE6B59D00FFB998 /* ListInteractor.swift */; };
+		4EC342CC2BE6F38400FFB998 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342C62BE6F38400FFB998 /* SearchPresenter.swift */; };
+		4EC342CD2BE6F38400FFB998 /* SearchWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342C72BE6F38400FFB998 /* SearchWorker.swift */; };
+		4EC342CE2BE6F38400FFB998 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342C82BE6F38400FFB998 /* SearchRouter.swift */; };
+		4EC342CF2BE6F38400FFB998 /* SearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342C92BE6F38400FFB998 /* SearchModels.swift */; };
+		4EC342D02BE6F38400FFB998 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342CA2BE6F38400FFB998 /* SearchViewController.swift */; };
+		4EC342D12BE6F38400FFB998 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342CB2BE6F38400FFB998 /* SearchInteractor.swift */; };
+		4EC342D42BE6F4F600FFB998 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC342D32BE6F4F600FFB998 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,12 +41,6 @@
 		4EC3427E2BE6B2FF00FFB998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EC342812BE6B2FF00FFB998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EC342832BE6B2FF00FFB998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4EC3428D2BE6B3C100FFB998 /* RadiusPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusPresenter.swift; sourceTree = "<group>"; };
-		4EC3428E2BE6B3C100FFB998 /* RadiusWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusWorker.swift; sourceTree = "<group>"; };
-		4EC3428F2BE6B3C100FFB998 /* RadiusRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusRouter.swift; sourceTree = "<group>"; };
-		4EC342902BE6B3C100FFB998 /* RadiusModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusModels.swift; sourceTree = "<group>"; };
-		4EC342912BE6B3C100FFB998 /* RadiusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusViewController.swift; sourceTree = "<group>"; };
-		4EC342922BE6B3C100FFB998 /* RadiusInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusInteractor.swift; sourceTree = "<group>"; };
 		4EC342992BE6B4D600FFB998 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		4EC3429A2BE6B4D600FFB998 /* MapWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWorker.swift; sourceTree = "<group>"; };
 		4EC3429B2BE6B4D600FFB998 /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
@@ -58,6 +53,13 @@
 		4EC342A82BE6B59D00FFB998 /* ListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModels.swift; sourceTree = "<group>"; };
 		4EC342A92BE6B59D00FFB998 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		4EC342AA2BE6B59D00FFB998 /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
+		4EC342C62BE6F38400FFB998 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		4EC342C72BE6F38400FFB998 /* SearchWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorker.swift; sourceTree = "<group>"; };
+		4EC342C82BE6F38400FFB998 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		4EC342C92BE6F38400FFB998 /* SearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModels.swift; sourceTree = "<group>"; };
+		4EC342CA2BE6F38400FFB998 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		4EC342CB2BE6F38400FFB998 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		4EC342D32BE6F4F600FFB998 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		4EC342742BE6B2FD00FFB998 /* AiportFinder */ = {
 			isa = PBXGroup;
 			children = (
+				4EC342D22BE6F4D400FFB998 /* Network */,
 				4EC3428C2BE6B39800FFB998 /* Scenes */,
 				4EC342752BE6B2FD00FFB998 /* AppDelegate.swift */,
 				4EC342772BE6B2FD00FFB998 /* SceneDelegate.swift */,
@@ -99,19 +102,6 @@
 				4EC342832BE6B2FF00FFB998 /* Info.plist */,
 			);
 			path = AiportFinder;
-			sourceTree = "<group>";
-		};
-		4EC342892BE6B37600FFB998 /* Radius */ = {
-			isa = PBXGroup;
-			children = (
-				4EC3428D2BE6B3C100FFB998 /* RadiusPresenter.swift */,
-				4EC3428E2BE6B3C100FFB998 /* RadiusWorker.swift */,
-				4EC3428F2BE6B3C100FFB998 /* RadiusRouter.swift */,
-				4EC342902BE6B3C100FFB998 /* RadiusModels.swift */,
-				4EC342912BE6B3C100FFB998 /* RadiusViewController.swift */,
-				4EC342922BE6B3C100FFB998 /* RadiusInteractor.swift */,
-			);
-			path = Radius;
 			sourceTree = "<group>";
 		};
 		4EC3428A2BE6B38700FFB998 /* Map */ = {
@@ -143,11 +133,32 @@
 		4EC3428C2BE6B39800FFB998 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				4EC342892BE6B37600FFB998 /* Radius */,
+				4EC342C52BE6F37200FFB998 /* Search */,
 				4EC3428A2BE6B38700FFB998 /* Map */,
 				4EC3428B2BE6B39100FFB998 /* List */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		4EC342C52BE6F37200FFB998 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				4EC342C62BE6F38400FFB998 /* SearchPresenter.swift */,
+				4EC342C72BE6F38400FFB998 /* SearchWorker.swift */,
+				4EC342C82BE6F38400FFB998 /* SearchRouter.swift */,
+				4EC342C92BE6F38400FFB998 /* SearchModels.swift */,
+				4EC342CA2BE6F38400FFB998 /* SearchViewController.swift */,
+				4EC342CB2BE6F38400FFB998 /* SearchInteractor.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		4EC342D22BE6F4D400FFB998 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4EC342D32BE6F4F600FFB998 /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,22 +235,23 @@
 				4EC342762BE6B2FD00FFB998 /* AppDelegate.swift in Sources */,
 				4EC3429F2BE6B4D600FFB998 /* MapPresenter.swift in Sources */,
 				4EC342A02BE6B4D600FFB998 /* MapWorker.swift in Sources */,
+				4EC342D42BE6F4F600FFB998 /* NetworkManager.swift in Sources */,
 				4EC342A12BE6B4D600FFB998 /* MapRouter.swift in Sources */,
 				4EC342A22BE6B4D600FFB998 /* MapModels.swift in Sources */,
 				4EC342A32BE6B4D600FFB998 /* MapViewController.swift in Sources */,
 				4EC342A42BE6B4D600FFB998 /* MapInteractor.swift in Sources */,
-				4EC342932BE6B3C100FFB998 /* RadiusPresenter.swift in Sources */,
-				4EC342942BE6B3C100FFB998 /* RadiusWorker.swift in Sources */,
 				4EC342AB2BE6B59D00FFB998 /* ListPresenter.swift in Sources */,
 				4EC342AC2BE6B59D00FFB998 /* ListWorker.swift in Sources */,
 				4EC342AD2BE6B59D00FFB998 /* ListRouter.swift in Sources */,
 				4EC342AE2BE6B59D00FFB998 /* ListModels.swift in Sources */,
 				4EC342AF2BE6B59D00FFB998 /* ListViewController.swift in Sources */,
 				4EC342B02BE6B59D00FFB998 /* ListInteractor.swift in Sources */,
-				4EC342952BE6B3C100FFB998 /* RadiusRouter.swift in Sources */,
-				4EC342962BE6B3C100FFB998 /* RadiusModels.swift in Sources */,
-				4EC342972BE6B3C100FFB998 /* RadiusViewController.swift in Sources */,
-				4EC342982BE6B3C100FFB998 /* RadiusInteractor.swift in Sources */,
+				4EC342CC2BE6F38400FFB998 /* SearchPresenter.swift in Sources */,
+				4EC342CD2BE6F38400FFB998 /* SearchWorker.swift in Sources */,
+				4EC342CE2BE6F38400FFB998 /* SearchRouter.swift in Sources */,
+				4EC342CF2BE6F38400FFB998 /* SearchModels.swift in Sources */,
+				4EC342D02BE6F38400FFB998 /* SearchViewController.swift in Sources */,
+				4EC342D12BE6F38400FFB998 /* SearchInteractor.swift in Sources */,
 				4EC342782BE6B2FD00FFB998 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

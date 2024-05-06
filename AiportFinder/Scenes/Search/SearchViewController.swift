@@ -1,5 +1,5 @@
 //
-//  RadiusViewController.swift
+//  SearchViewController.swift
 //  AiportFinder
 //
 //  Created by Eduardo Batista on 04/05/24.
@@ -12,16 +12,22 @@
 
 import UIKit
 
-protocol RadiusDisplayLogic: AnyObject {
-    func displaySomething(viewModel: Radius.Something.ViewModel)
+protocol SearchDisplayLogic: AnyObject {
+    func displaySomething(viewModel: Search.Data.ViewModel)
+    func displayAirports(viewModel: Search.Data.ViewModel)
+    func displayError(error: Error)
 }
 
-class RadiusViewController: UIViewController, RadiusDisplayLogic {
-    var interactor: RadiusBusinessLogic?
-    var router: (NSObjectProtocol & RadiusRoutingLogic & RadiusDataPassing)?
+class SearchViewController: UIViewController, SearchDisplayLogic {
+  
+    
+    var interactor: SearchBusinessLogic?
+    var router: (NSObjectProtocol & SearchRoutingLogic & SearchDataPassing)?
+    
+    @IBOutlet var radiusLabel: UILabel!
+    @IBOutlet var radiusSlider: UISlider!
     
     // MARK: Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -36,9 +42,9 @@ class RadiusViewController: UIViewController, RadiusDisplayLogic {
     
     private func setup() {
         let viewController = self
-        let interactor = RadiusInteractor()
-        let presenter = RadiusPresenter()
-        let router = RadiusRouter()
+        let interactor = SearchInteractor()
+        let presenter = SearchPresenter()
+        let router = SearchRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -62,19 +68,44 @@ class RadiusViewController: UIViewController, RadiusDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+        
+    }
+    
+    @IBAction func sliderChanged(_ sender: UISlider) {
+        self.radiusLabel.text = String(format: "%.0f", sender.value)
+    }
+    
+    @IBAction func searchPressed(_ sender: UIButton) {
+        doSearchAirports()
     }
     
     // MARK: Do something
     
     //@IBOutlet weak var nameTextField: UITextField!
     
-    func doSomething() {
-        let request = Radius.Something.Request()
-        interactor?.doSomething(request: request)
+    func doSearchAirports() {
+        // 19.541793759109904, -99.0659460651684
+        let lat = "-54.81"
+        let lon = "-68.315"
+        let radius = "60"
+        let request = Search.Data.Request(lat: lat, lon: lon, radius: radius)
+        interactor?.doSearchAirports(request: request)
+        print("doSearchAirports")
     }
     
-    func displaySomething(viewModel: Radius.Something.ViewModel) {
+    func displaySomething(viewModel: Search.Data.ViewModel) {
         //nameTextField.text = viewModel.name
     }
+    
+    func displayAirports(viewModel: Search.Data.ViewModel) {
+        for airport in viewModel.ariports {
+            print(airport.name)
+        }
+    }
+    
+    
+    func displayError(error: any Error) {
+        print(error)
+    }
+    
 }

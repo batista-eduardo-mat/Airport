@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Radius View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RadiusViewController" customModule="AiportFinder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SearchViewController" customModule="AiportFinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,6 +52,9 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="1" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="ggd-81-lLL">
                                                         <rect key="frame" x="-2" y="0.0" width="244" height="31"/>
                                                         <color key="tintColor" red="0.22745099660000001" green="0.40392160420000001" blue="0.75294119120000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <connections>
+                                                            <action selector="sliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="k4h-DU-dZR"/>
+                                                        </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RADIUS IN KM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68p-Rj-agc">
                                                         <rect key="frame" x="0.0" y="30" width="240" height="20.5"/>
@@ -79,6 +82,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10f"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vhd-aI-snH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -94,6 +100,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="dDd-By-EsE"/>
                     <connections>
+                        <outlet property="radiusLabel" destination="1Lo-XJ-I3f" id="Nxw-n0-SKz"/>
+                        <outlet property="radiusSlider" destination="ggd-81-lLL" id="X5p-2D-VIw"/>
                         <segue destination="zHS-z7-aOR" kind="show" id="7VW-29-LuK"/>
                     </connections>
                 </viewController>

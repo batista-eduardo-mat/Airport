@@ -1,5 +1,5 @@
 //
-//  RadiusRouter.swift
+//  SearchRouter.swift
 //  AiportFinder
 //
 //  Created by Eduardo Batista on 04/05/24.
@@ -12,17 +12,17 @@
 
 import UIKit
 
-@objc protocol RadiusRoutingLogic {
+@objc protocol SearchRoutingLogic {
     //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol RadiusDataPassing {
-    var dataStore: RadiusDataStore? { get }
+protocol SearchDataPassing {
+    var dataStore: SearchDataStore? { get }
 }
 
-class RadiusRouter: NSObject, RadiusRoutingLogic, RadiusDataPassing {
-    weak var viewController: RadiusViewController?
-    var dataStore: RadiusDataStore?
+class SearchRouter: NSObject, SearchRoutingLogic, SearchDataPassing {
+    weak var viewController: SearchViewController?
+    var dataStore: SearchDataStore?
     
     // MARK: Routing
     
@@ -43,14 +43,14 @@ class RadiusRouter: NSObject, RadiusRoutingLogic, RadiusDataPassing {
     
     // MARK: Navigation
     
-    //func navigateToSomewhere(source: RadiusViewController, destination: SomewhereViewController)
+    //func navigateToSomewhere(source: SearchViewController, destination: SomewhereViewController)
     //{
     //  source.show(destination, sender: nil)
     //}
     
     // MARK: Passing data
     
-    //func passDataToSomewhere(source: RadiusDataStore, destination: inout SomewhereDataStore)
+    //func passDataToSomewhere(source: SearchDataStore, destination: inout SomewhereDataStore)
     //{
     //  destination.name = source.name
     //}
