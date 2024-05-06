@@ -71,32 +71,9 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         super.viewDidLoad()
         activityIndicator.isHidden = true
         locationManager.delegate = self
-        validateAuthorizationStatus()
         locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
-        
-        
     }
-    func validateAuthorizationStatus() {
-        let authorizationStatus = locationManager.authorizationStatus
-        
-        switch authorizationStatus {
-        case .notDetermined:
-            self.locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            break
-        case .denied:
-            showAlert(title: "Latitud Longitud", message: "Allow location from settings to continue.")
-        case .authorizedAlways:
-            break
-        case .authorizedWhenInUse:
-            break
-        case .authorized:
-            break
-        @unknown default:
-            break
-        }
-    }
+    
     @IBAction func sliderChanged(_ sender: UISlider) {
         self.radiusLabel.text = String(format: "%.0f", sender.value)
     }
@@ -117,6 +94,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
                 self?.activityIndicator.stopAnimating()
                 self?.activityIndicator.isHidden = true
             }
+            showAlert(title: "Location Error", message: "Allow location from settings to continue. [guard let]")
             return
         }
         let radiusSelected = String(format: "%.0f",radiusSlider.value)
@@ -154,7 +132,26 @@ extension SearchViewController: CLLocationManagerDelegate {
             self.currentLongitude = longitude
         }
     }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
-        print(error)
+        showAlert(title: "Error", message: "Allow location from settings to continue. [CLLocationDelegate]")
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            locationManager.startUpdatingLocation()
+        case .denied:
+            locationManager.stopUpdatingLocation()
+        case .authorizedAlways:
+            locationManager.startUpdatingLocation()
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        @unknown default:
+            break
+        }
     }
 }
